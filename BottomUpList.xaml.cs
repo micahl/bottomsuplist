@@ -26,7 +26,7 @@ namespace BottomsUpList
         {
             this.InitializeComponent();
 
-            //this.Loaded += BottomUpList_Loaded;
+            this.Loaded += BottomUpList_Loaded;
         }
 
         private void BottomUpList_Loaded(object sender, RoutedEventArgs e)
@@ -34,10 +34,7 @@ namespace BottomsUpList
             if (Scroller != null)
             {
                 // Scroll to the end.
-                Scroller.ScrollTo(
-                    Scroller.HorizontalOffset, 
-                    Scroller.ExtentHeight - Scroller.ViewportHeight,
-                    new ScrollOptions(AnimationMode.Disabled));
+                Scroller.ChangeView(null, Scroller.ExtentHeight - Scroller.ViewportHeight, null, true);
             }
         }
 
@@ -107,20 +104,20 @@ namespace BottomsUpList
             }
         }
 
-        private void ScrollViewer_ViewChanged(Microsoft.UI.Xaml.Controls.Primitives.Scroller scroller, object args)
-        {
-            var itemsSource = ItemsSource as ISupportIncrementalLoading;
+        //private void ScrollViewer_ViewChanged(Microsoft.UI.Xaml.Controls.Primitives.Scroller scroller, object args)
+        //{
+        //    var itemsSource = ItemsSource as ISupportIncrementalLoading;
 
-            if (scroller.State == Microsoft.UI.Xaml.Controls.InteractionState.Idle)
-            {
-                // trigger if within 2 viewports of the top
-                if (scroller.VerticalOffset <= 2.0 * scroller.ViewportHeight
-                        && itemsSource.HasMoreItems && !LoadingMoreItems)
-                {
-                    LoadMoreItems(15);
-                }
-            }
-        }
+        //    if (scroller.State == Microsoft.UI.Xaml.Controls.InteractionState.Idle)
+        //    {
+        //        // trigger if within 2 viewports of the top
+        //        if (scroller.VerticalOffset <= 2.0 * scroller.ViewportHeight
+        //                && itemsSource.HasMoreItems && !LoadingMoreItems)
+        //        {
+        //            LoadMoreItems(15);
+        //        }
+        //    }
+        //}
 
         private async void LoadMoreItems(int dataFetchSize)
         {

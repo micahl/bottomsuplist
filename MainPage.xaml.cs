@@ -96,7 +96,7 @@ namespace BottomsUpList
         {
             this.InitializeComponent();
 
-            //this.conversation.LoadMoreItemsAsync((int)10).GetResults();
+            this.conversation.LoadMoreItemsAsync((int)10).GetResults();
             chatView.ItemsSource = this.conversation;
         }
 
