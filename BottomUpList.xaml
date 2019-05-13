@@ -13,8 +13,7 @@
     d:DesignHeight="300"
     d:DesignWidth="400">
 
-    <!-- ScrollAnchorProvider (renamed to ItemsRepeaterScrollHost in future versions of WinUI) is only for targeting Windows 10 prior 
-         to 1809.  If MinTargetVersion is 1809 or higher then it should be removed.
+    <!-- ItemsRepeaterScrollHost is only for targeting Windows 10 prior to 1809.  If MinTargetVersion is 1809 or higher then it should be removed.
 
          The VerticalAnchorRatio of 1.0 causes the viewport to automatically track items near the bottom and when scrolled all the way to the bottom
          it will auto-scroll to keep the newly added items in view.
