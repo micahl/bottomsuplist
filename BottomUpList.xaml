@@ -21,20 +21,20 @@
          We'll observe the viewport and trigger incrementally loaded data as it nears the extent.
     -->
 
-    <muxc:ItemsRepeaterScrollHost Grid.Row="1"
+    <!--<muxc:ItemsRepeaterScrollHost Grid.Row="1"
                                   VerticalAnchorRatio="1.0"
                                   VerticalAlignment="Bottom">
     <ScrollViewer x:Name="Scroller"
                   contract7Present:VerticalAnchorRatio="1.0"
                   VerticalAlignment="Bottom"
-                  ViewChanged="ScrollViewer_ViewChanged">
+                  ViewChanged="ScrollViewer_ViewChanged">-->
     
-    <!--<muxcp:Scroller x:Name="Scroller"
+    <muxcp:Scroller x:Name="Scroller"
                     HorizontalScrollMode="Disabled"
                     VerticalAnchorRatio="1.0"
                     VerticalAlignment="Top"
                     ViewChanged="ScrollViewer_ViewChanged"
-                    ContentOrientation="Vertical">-->
+                    ContentOrientation="Vertical">
 
         <!--<StackPanel>
                 <ProgressRing IsActive="{x:Bind LoadingMoreItems, Mode=OneWay}"
@@ -44,7 +44,7 @@
                                     ItemTemplate="{x:Bind ItemTemplate, Mode=OneWay}"/>
         <!--</StackPanel>-->
 
-    <!--</muxcp:Scroller>-->
-    </ScrollViewer>
-    </muxc:ItemsRepeaterScrollHost>
+    </muxcp:Scroller>
+    <!--</ScrollViewer>
+    </muxc:ItemsRepeaterScrollHost>-->
 </UserControl>

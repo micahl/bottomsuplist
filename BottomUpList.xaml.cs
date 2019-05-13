@@ -34,7 +34,8 @@ namespace BottomsUpList
             if (Scroller != null)
             {
                 // Scroll to the end.
-                Scroller.ChangeView(null, Scroller.ExtentHeight - Scroller.ViewportHeight, null, true);
+                //Scroller.ChangeView(null, Scroller.ExtentHeight - Scroller.ViewportHeight, null, true);
+                Scroller.ScrollTo(0, Scroller.ExtentHeight - Scroller.ViewportHeight, new ScrollOptions(AnimationMode.Disabled));
             }
         }
 
@@ -87,29 +88,14 @@ namespace BottomsUpList
             return result;
         }
 
-        private void ScrollViewer_ViewChanged(object sender, ScrollViewerViewChangedEventArgs e)
-        {
-            if (!e.IsIntermediate)
-            {
-                var itemsSource = ItemsSource as ISupportIncrementalLoading;
-                var scroller = (Windows.UI.Xaml.Controls.ScrollViewer)sender;
-                //var distanceToTop = scroller.ExtentHeight - (scroller.VerticalOffset + scroller.ViewportHeight);
-
-                // trigger if within 2 viewports of the top
-                if (scroller.VerticalOffset <= 2.0 * scroller.ViewportHeight
-                        && itemsSource.HasMoreItems && !LoadingMoreItems)
-                {
-                    LoadMoreItems(15);
-                }
-            }
-        }
-
-        //private void ScrollViewer_ViewChanged(Microsoft.UI.Xaml.Controls.Primitives.Scroller scroller, object args)
+        //private void ScrollViewer_ViewChanged(object sender, ScrollViewerViewChangedEventArgs e)
         //{
-        //    var itemsSource = ItemsSource as ISupportIncrementalLoading;
-
-        //    if (scroller.State == Microsoft.UI.Xaml.Controls.InteractionState.Idle)
+        //    if (!e.IsIntermediate)
         //    {
+        //        var itemsSource = ItemsSource as ISupportIncrementalLoading;
+        //        var scroller = (Windows.UI.Xaml.Controls.ScrollViewer)sender;
+        //        //var distanceToTop = scroller.ExtentHeight - (scroller.VerticalOffset + scroller.ViewportHeight);
+
         //        // trigger if within 2 viewports of the top
         //        if (scroller.VerticalOffset <= 2.0 * scroller.ViewportHeight
         //                && itemsSource.HasMoreItems && !LoadingMoreItems)
@@ -118,6 +104,21 @@ namespace BottomsUpList
         //        }
         //    }
         //}
+
+        private void ScrollViewer_ViewChanged(Microsoft.UI.Xaml.Controls.Primitives.Scroller scroller, object args)
+        {
+            var itemsSource = ItemsSource as ISupportIncrementalLoading;
+
+            if (scroller.State == Microsoft.UI.Xaml.Controls.InteractionState.Idle)
+            {
+                // trigger if within 2 viewports of the top
+                if (scroller.VerticalOffset <= 2.0 * scroller.ViewportHeight
+                        && itemsSource.HasMoreItems && !LoadingMoreItems)
+                {
+                    LoadMoreItems(15);
+                }
+            }
+        }
 
         private async void LoadMoreItems(int dataFetchSize)
         {
