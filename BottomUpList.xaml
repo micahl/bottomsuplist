@@ -29,7 +29,7 @@
                   VerticalAlignment="Bottom"
                   ViewChanged="ScrollViewer_ViewChanged">-->
     
-    <muxcp:Scroller x:Name="Scroller"
+    <muxc:ScrollViewer x:Name="Scroller"
                     HorizontalScrollMode="Disabled"
                     VerticalAnchorRatio="1.0"
                     VerticalAlignment="Top"
@@ -44,7 +44,7 @@
                                     ItemTemplate="{x:Bind ItemTemplate, Mode=OneWay}"/>
         <!--</StackPanel>-->
 
-    </muxcp:Scroller>
+    </muxc:ScrollViewer>
     <!--</ScrollViewer>
     </muxc:ItemsRepeaterScrollHost>-->
 </UserControl>

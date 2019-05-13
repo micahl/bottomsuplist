@@ -105,7 +105,7 @@ namespace BottomsUpList
         //    }
         //}
 
-        private void ScrollViewer_ViewChanged(Microsoft.UI.Xaml.Controls.Primitives.Scroller scroller, object args)
+        private void ScrollViewer_ViewChanged(Microsoft.UI.Xaml.Controls.ScrollViewer scroller, object args)
         {
             var itemsSource = ItemsSource as ISupportIncrementalLoading;
 
