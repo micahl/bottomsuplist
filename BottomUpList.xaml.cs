@@ -109,14 +109,11 @@ namespace BottomsUpList
         {
             var itemsSource = ItemsSource as ISupportIncrementalLoading;
 
-            if (scroller.State == Microsoft.UI.Xaml.Controls.InteractionState.Idle)
+            // trigger if within 2 viewports of the top
+            if (scroller.VerticalOffset <= 2.0 * scroller.ViewportHeight
+                    && itemsSource.HasMoreItems && !LoadingMoreItems)
             {
-                // trigger if within 2 viewports of the top
-                if (scroller.VerticalOffset <= 2.0 * scroller.ViewportHeight
-                        && itemsSource.HasMoreItems && !LoadingMoreItems)
-                {
-                    LoadMoreItems(15);
-                }
+                LoadMoreItems(15);
             }
         }
 
